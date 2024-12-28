@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lua Code Editor</title>
+    <style>
+        /* Styling the editor container */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        #editorContainer {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="editorContainer"></div>
+
+    <!-- Monaco Editor Loader Script -->
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor/min/vs/loader.js"></script>
+    <script>
+        // Load the Monaco Editor
+        require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor/min/vs' } });
+
+        require(['vs/editor/editor.main'], function() {
+            monaco.editor.create(document.getElementById('editorContainer'), {
+                value: '-- Write your Lua code here\n',
+                language: 'lua', // Set language to Lua
+                theme: 'vs-dark', // Optional: Set theme (vs, vs-dark, hc-black)
+                automaticLayout: true // Ensure it resizes automatically
+            });
+        });
+    </script>
+</body>
+</html>
